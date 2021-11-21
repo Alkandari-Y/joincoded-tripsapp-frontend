@@ -5,7 +5,7 @@ import { View, Pressable } from 'react-native'
 //React Native Vector Icons
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const MenuIcon = () => {
+const MenuIcon = ({navigation}) => {
     return (
         <Pressable onPress={() => {}} style={{marginRight: 15}}>
             <View>

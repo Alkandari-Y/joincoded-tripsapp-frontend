@@ -2,7 +2,7 @@ import React from 'react'
 //Navigation
 import { createStackNavigator } from "@react-navigation/stack";
 //Components
-import Home from './Home';
+import Home from './Home/Home';
 import MenuIcon from './MenuIcon';
 
 const Navigation = () => {
