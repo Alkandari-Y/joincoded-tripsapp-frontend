@@ -1,11 +1,31 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+//Navigation
+import { createStackNavigator } from "@react-navigation/stack";
+//Components
+import Home from './Home';
+import MenuIcon from './MenuIcon';
 
 const Navigation = () => {
+    const { Navigator, Screen } = createStackNavigator();
+
     return (
-        <View>
-            <Text></Text>
-        </View>
+        <Navigator initialRouteName="Home"
+            screenOptions={
+                ({navigation }) => {
+                    return ({
+                        headerStyle: {
+                            backgroundColor: "#DBF9F0"
+                        },
+                        headerRight: () => 
+                            <MenuIcon navigation={navigation} />
+                        
+                    });
+                }
+            }
+        >
+            <Screen name="Home" component={Home} />
+            
+        </Navigator>
     )
 }
 
