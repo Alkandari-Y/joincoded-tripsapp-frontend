@@ -44,25 +44,15 @@ const MenuIcon = ({ navigation }) => {
                 </Actionsheet.Item>
               </>
             ) : (
-              <>
-                {authStore.user && (
-                  <Actionsheet.Item>
-                    Hello {authStore.user.username}
-                  </Actionsheet.Item>
-                )}
-                <Actionsheet.Item
-                  onPress={() => navigation.navigate("CreateTrip")}
-                >
-                  Create Trip
-                </Actionsheet.Item>
-                <Actionsheet.Item onPress={() => openAuthPage("Signup")}>
-                    Signup
-                </Actionsheet.Item>
-            </>
-            :
             <>
-            {authStore.user && <Actionsheet.Item>Hello {authStore.user.username}</Actionsheet.Item>}
-
+                {authStore.user && 
+                    <Actionsheet.Item>Hello {authStore.user.username}</Actionsheet.Item> 
+                }
+                
+                <Actionsheet.Item onPress={() => navigation.navigate("CreateTrip")} >
+                    Create Trip
+                </Actionsheet.Item>
+                
                 <Actionsheet.Item >
                     <Button onPress={()=> navigation.navigate('Profile')} >View Profile</Button>
                 </Actionsheet.Item>
