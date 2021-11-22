@@ -26,27 +26,8 @@ const Signup = ({ navigation }) => {
     })
     const toast = useToast()
 
-    const [confirmPass, setConfirmPass] = useState({
-        password: ''
-    })
-
-    const clearPasswordInput = () => {
-        setNewUser({...newUser, password: ''});
-        setConfirmPass({ password: '' });
-    }
-
     const handleSubmit = () => {
-        if (newUser.password !== confirmPass.password) {
-            Alert.alert(
-                "Password does not match!",
-                "Please ensure your password is correct.",
-                [{ text: "OK", onPress: () => clearPasswordInput() }]
-            );
-        } else {
             authStore.signUp(newUser, navigation, toast);
-            clearPasswordInput()
-        }
-        
     }
 
 
@@ -90,13 +71,7 @@ const Signup = ({ navigation }) => {
                     <FormControl.Label>Password</FormControl.Label>
                     <Input type="password" value={newUser.password}
                         onChangeText={(password) => setNewUser({...newUser, password }) } />
-                    </FormControl>
-                    
-                <FormControl>
-                    <FormControl.Label>Confirm Password</FormControl.Label>
-                    <Input type="password" value={confirmPass.password}
-                        onChangeText={(password) => setConfirmPass({...confirmPass, password }) } />
-                    </FormControl>
+                </FormControl>
                     
                 <Button onPress={handleSubmit} mt="2" colorScheme="indigo">
                     Sign up
