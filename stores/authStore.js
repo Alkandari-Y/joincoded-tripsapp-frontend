@@ -37,7 +37,6 @@ class AuthStore {
 
 	signIn = async (user, navigation, toast ) => {
 		try {
-			console.log(user)
 			const res = await instance.post("/signin", user);
 			await this.setUser(res.data.token);
 			toast.show({
@@ -46,7 +45,6 @@ class AuthStore {
 				placement: "top",
 			});
 			navigation.navigate("Home")
-
 		} catch (error) {
 			console.log(error);
 		toast.show({

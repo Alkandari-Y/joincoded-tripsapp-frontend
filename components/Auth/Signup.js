@@ -30,15 +30,23 @@ const Signup = ({ navigation }) => {
         password: ''
     })
 
+    const clearPasswordInput = () => {
+        setNewUser({...newUser, password: ''});
+        setConfirmPass({ password: '' });
+    }
+
     const handleSubmit = () => {
         if (newUser.password !== confirmPass.password) {
             Alert.alert(
                 "Password does not match!",
                 "Please ensure your password is correct.",
-                [{ text: "OK", onPress: () => console.log("OK Pressed") }]
-              );
+                [{ text: "OK", onPress: () => clearPasswordInput() }]
+            );
+        } else {
+            authStore.signUp(newUser, navigation, toast);
+            clearPasswordInput()
         }
-        authStore.signUp(newUser, navigation, toast);
+        
     }
 
 
@@ -80,13 +88,13 @@ const Signup = ({ navigation }) => {
                     
                 <FormControl>
                     <FormControl.Label>Password</FormControl.Label>
-                    <Input type="password"
+                    <Input type="password" value={newUser.password}
                         onChangeText={(password) => setNewUser({...newUser, password }) } />
                     </FormControl>
                     
                 <FormControl>
                     <FormControl.Label>Confirm Password</FormControl.Label>
-                    <Input type="password"
+                    <Input type="password" value={confirmPass.password}
                         onChangeText={(password) => setConfirmPass({...confirmPass, password }) } />
                     </FormControl>
                     

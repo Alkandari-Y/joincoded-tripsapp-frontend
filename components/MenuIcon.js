@@ -18,7 +18,6 @@ import authStore from "../stores/authStore"
 const MenuIcon = ({ navigation }) => {
     
     const openAuthPage = (pageName) => {
-        console.log('clicked')
         navigation.navigate(pageName)
     };
 
