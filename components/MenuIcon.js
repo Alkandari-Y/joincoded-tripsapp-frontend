@@ -50,7 +50,7 @@ const MenuIcon = ({ navigation }) => {
                                 {authStore.user && <Actionsheet.Item>Hello {authStore.user.username}</Actionsheet.Item>}
                                 
                                     <Actionsheet.Item >
-                                        <Button >View Profile</Button>
+                                        <Button onPress={()=> navigation.navigate('Profile')} >View Profile</Button>
                                     </Actionsheet.Item>
                                     
                                     <Actionsheet.Item >
