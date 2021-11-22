@@ -14,6 +14,7 @@ class AuthStore {
         }
 
 	user = null;
+	profile = null;
 
     setUser = async (token) => {
         const userToken = JSON.stringify(token)
@@ -86,5 +87,5 @@ class AuthStore {
 }
 
 const authStore = new AuthStore();
-// authStore.checkForToken();
+authStore.checkForToken();
 export default authStore;
