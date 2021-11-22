@@ -19,6 +19,15 @@ class TripStore {
       console.log("tripStore -> fetchTrips -> error", error);
     }
   };
+
+  createTrip = async (trip, navigation, toast) => {
+    try {
+      const res = await instance.post("/trips", trip);
+      this.trips.push(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const tripStore = new TripStore();
