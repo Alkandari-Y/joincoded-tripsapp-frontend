@@ -17,7 +17,9 @@ class AuthStore {
   
   getCurrentUserProfile = async () => {
     try {
-      this.profile = await instance.post("/profile")
+      console.log('called function')
+      const res = await instance.get("/profile")
+      this.profile = res.data
     } catch (error) {
       console.log(error)
     }
@@ -25,22 +27,23 @@ class AuthStore {
 
   setUser = async (token) => {
     const userToken = JSON.stringify(token);
-    await AsyncStorage.setItem("myToken", userToken);
+    await AsyncStorage.setItem("userToken", userToken);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    await this.getCurrentUserProfile()
   };
 
   checkForToken = async () => {
-    const token = await AsyncStorage.getItem("myToken");
+    const token = await AsyncStorage.getItem("userToken");
     if (token) {
       const tempUser = decode(token);
-      const time = tempUser.exp * 1000;
+      const time = tempUser.exp * 10000;
       if (time > Date.now()) {
         this.setUser(token);
-        await this.getCurrentUserProfile()
       } else {
         this.signOut();
       }
+      await this.getCurrentUserProfile()
     }
   };
 
@@ -53,7 +56,6 @@ class AuthStore {
         status: "success",
         placement: "top",
       });
-      await this.getCurrentUserProfile()
       navigation.navigate("Home");
     } catch (error) {
       console.log(error);
@@ -76,7 +78,6 @@ class AuthStore {
         status: "success",
         placement: "top",
       });
-      await this.getCurrentUserProfile()
     } catch (error) {
       console.log(error);
       toast.show({
