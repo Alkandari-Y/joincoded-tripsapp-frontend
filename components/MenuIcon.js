@@ -4,9 +4,12 @@ import React from "react"
 import { Pressable } from "react-native";
 //Native Base
 import {
-    Menu,
+    Actionsheet,
     Box,
     Center,
+    useDisclose,
+    Text,
+    Button,
   } from "native-base"
 //React Native Vector Icons
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -16,6 +19,9 @@ import { observer } from "mobx-react";
 import authStore from "../stores/authStore"
 
 const MenuIcon = ({ navigation }) => {
+
+    const { isOpen, onOpen, onClose } = useDisclose()
+
     
     const openAuthPage = (pageName) => {
         navigation.navigate(pageName)
@@ -23,39 +29,39 @@ const MenuIcon = ({ navigation }) => {
 
     return (
         <Center>
-            <Box>
-                <Menu
-                    w="120"
-                    trigger={(triggerProps) => {
-                    return (
-                        <Pressable {...triggerProps} style={{marginRight: 15}}>
-                            <Icon name="setting" color='black' size={15} />
-                        </Pressable>
-                    )
-                        }}
-                >
-                    {!authStore.user ?
-                        <>
-                            <Menu.Item onPress={() => openAuthPage("Signin")}>
-                                Signin
-                            </Menu.Item>
-                            <Menu.Item onPress={() => openAuthPage("Signup")}>
-                                Signup
-                            </Menu.Item>
-                        </>
-                        :
-                    <>
-                        {authStore.user && <Menu.Item>Hello {authStore.user.username}</Menu.Item>}
-                        <Pressable >
-                            <Menu.Item onPress={() => authStore.signOut()}>
-                                Logout!
-                        </Menu.Item>
-                        </Pressable>
-                    </>
-                    }
-                </Menu>
-            </Box>
-            
+            <Pressable onPress={onOpen} style={{marginRight: 15}}>
+                <Icon name="setting" color='black' size={15} />
+            </Pressable>
+                <Actionsheet isOpen={isOpen} onClose={onClose}>
+                    <Actionsheet.Content>
+                        <Box w="100%" px={4} justifyContent="center">
+                            {!authStore.user ?
+                                <>
+                                    <Actionsheet.Item  onPress={() => openAuthPage("Signin")}>
+                                            Signin
+                                    </Actionsheet.Item>
+
+                                    <Actionsheet.Item onPress={() => openAuthPage("Signup")}>
+                                        Signup
+                                    </Actionsheet.Item>
+                                </>
+                                :
+                                <>
+                                {authStore.user && <Actionsheet.Item>Hello {authStore.user.username}</Actionsheet.Item>}
+                                
+                                    <Actionsheet.Item >
+                                        <Button >View Profile</Button>
+                                    </Actionsheet.Item>
+                                    
+                                    <Actionsheet.Item >
+                                        <Button onPress={() => authStore.signOut()} >Logout!</Button>
+                                    </Actionsheet.Item>
+                                    
+                                </>
+                            }
+                        </Box>
+                    </Actionsheet.Content>
+                </Actionsheet>
         </Center>
     )
 }
