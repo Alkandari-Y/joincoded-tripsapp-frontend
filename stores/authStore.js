@@ -13,43 +13,33 @@ class AuthStore {
   }
 
 	user = null;
-  profile = null;
-  
-  getCurrentUserProfile = async () => {
-    try {
-      console.log('called function')
-      const res = await instance.get("/profile")
-      this.profile = res.data
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   setUser = async (token) => {
     const userToken = JSON.stringify(token);
     await AsyncStorage.setItem("userToken", userToken);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
-    await this.getCurrentUserProfile()
   };
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("userToken");
+    console.log(token)
     if (token) {
       const tempUser = decode(token);
-      const time = tempUser.exp * 10000;
-      if (time > Date.now()) {
+      console.log(token)
+      const exp = tempUser.exp * 1000;
+      if (exp > Date.now()) {
         this.setUser(token);
       } else {
         this.signOut();
       }
-      await this.getCurrentUserProfile()
     }
   };
 
   signIn = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/signin", user);
+      console.log(res.data.token)
       await this.setUser(res.data.token);
       toast.show({
         title: "Welcome",
@@ -91,10 +81,8 @@ class AuthStore {
 
   signOut = async () => {
     delete instance.defaults.headers.common.Authorization;
-    await AsyncStorage.removeItem("myToken");
+    await AsyncStorage.removeItem("userToken");
     this.user = null;
-    this.profile = null;
-    console.log(`logged out`);
   };
 }
 
