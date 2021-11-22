@@ -17,6 +17,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import { observer } from "mobx-react";
 //Store Imports
 import authStore from "../stores/authStore";
+import profileStore from "../stores/profileStore";
 
 const MenuIcon = ({ navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclose();
@@ -24,6 +25,11 @@ const MenuIcon = ({ navigation }) => {
   const openAuthPage = (pageName) => {
     navigation.navigate(pageName);
   };
+
+  const handleUserProfileNav = () => {
+    profileStore.getSelectedProfile(authStore.user.username);
+    navigation.navigate('Profile');
+  }
 
   return (
     <Center>
@@ -54,7 +60,7 @@ const MenuIcon = ({ navigation }) => {
                 </Actionsheet.Item>
                 
                 <Actionsheet.Item >
-                    <Button onPress={()=> navigation.navigate('Profile')} >View Profile</Button>
+                    <Button onPress={handleUserProfileNav} >View Profile</Button>
                 </Actionsheet.Item>
 
                 <Actionsheet.Item >

@@ -6,33 +6,36 @@ import {
     Center,
     Heading,
     Divider,
-    Container
+    Container,
+    Spinner
   } from "native-base"
 //Mobx
 import { observer } from 'mobx-react'
 //Store
 import authStore from '../../stores/authStore'
-import { baseUrl } from '../../stores/baseUrl'
+import profileStore from '../../stores/profileStore'
 //Components
 import UserAvatar from './UserAvatar'
 import FavPlaces from './FavPlaces'
 
 const UserProfile = ({ navigation, props }) => {
-    let userProfile;
 
-    
-    if (!props) {
-        userProfile = { username: authStore.user.username, profile: authStore.profile };
-    }
+    let selectedProfile;
 
     // const FavList = userProfile.profile.favoriteTrips.map(trip => (<FavPlaces key={TripItem._id} trip={trip}/>))
-       
+    
+    if (profileStore.isLoading) {
+        return <Spinner />;
+    }
+    console.log(profileStore.accountProfile)
+    selectedProfile = profileStore.accountProfile;
+
 
     return (
         <Center>
-            <Container space="1.5" mt="2">
+            <Container  mt="2">
 
-                    <UserAvatar image={ userProfile.profile.image } username={ userProfile.username } />
+                    <UserAvatar image={ selectedProfile.image } username={ selectedProfile.username } />
                 <Divider />
                 
                 <Heading size="md">Place To Go</Heading>
@@ -43,7 +46,7 @@ const UserProfile = ({ navigation, props }) => {
                 <Heading size="md">Bio</Heading>
                 <Stack mb="2.5" mt="1.5" direction="column" space={3}>
                 <Center>
-                    { userProfile.profile.bio }
+                    { selectedProfile.bio }
                 </Center>
 
                 </Stack>

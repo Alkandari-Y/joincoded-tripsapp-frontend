@@ -5,7 +5,11 @@ import {
     Center,
     Heading,
     Avatar,
-  } from "native-base"
+} from "native-base"
+  //Mobx
+import { observer } from 'mobx-react'
+//Axios
+import { baseUrl } from '../../stores/baseUrl'
 
 const UserAvatar = ({ image, username }) => {
     return (
@@ -14,7 +18,7 @@ const UserAvatar = ({ image, username }) => {
                 bg="purple.600"
                 alignSelf="center"
                 size="2xl"
-                source={{ uri: image }}
+                source={{ uri: baseUrl + image }}
             />
             <Center m={4}>
                 <Heading>{ username}</Heading>
@@ -24,4 +28,4 @@ const UserAvatar = ({ image, username }) => {
     )
 }
 
-export default UserAvatar
+export default observer(UserAvatar)
