@@ -13,7 +13,15 @@ class AuthStore {
   }
 
 	user = null;
-	profile = null;
+  profile = null;
+  
+  getCurrentUserProfile = async () => {
+    try {
+      this.profile = await instance.post("/profile")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   setUser = async (token) => {
     const userToken = JSON.stringify(token);
@@ -29,6 +37,7 @@ class AuthStore {
       const time = tempUser.exp * 1000;
       if (time > Date.now()) {
         this.setUser(token);
+        await this.getCurrentUserProfile()
       } else {
         this.signOut();
       }
@@ -44,6 +53,7 @@ class AuthStore {
         status: "success",
         placement: "top",
       });
+      await this.getCurrentUserProfile()
       navigation.navigate("Home");
     } catch (error) {
       console.log(error);
@@ -66,6 +76,7 @@ class AuthStore {
         status: "success",
         placement: "top",
       });
+      await this.getCurrentUserProfile()
     } catch (error) {
       console.log(error);
       toast.show({
@@ -81,6 +92,7 @@ class AuthStore {
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
     this.user = null;
+    this.profile = null;
     console.log(`logged out`);
   };
 }
