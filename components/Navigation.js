@@ -10,6 +10,7 @@ import TripList from "./TripList";
 import CreateTrip from "./TripList/CreateTrip";
 import UserProfile from "./ProfilePage/UserProfile";
 import TripDetail from "./TripDetail";
+import UpdateTrip from "./TripList/UpdateTrip";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -31,6 +32,7 @@ const Navigation = () => {
       <Screen name="Home" component={Home} />
       <Screen name="TripList" component={TripList} />
       <Screen name="CreateTrip" component={CreateTrip} />
+      <Screen name="updateTrip" component={UpdateTrip} />
       <Screen name="Profile" component={UserProfile} />
       <Screen
         name="TripDetail"
