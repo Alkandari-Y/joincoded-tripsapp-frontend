@@ -14,13 +14,13 @@ import { observer } from 'mobx-react'
 //Axios
 import { baseUrl } from '../../stores/baseUrl'
 //Stores
-import authStore from '../../stores/authStore'
 import tripStore from '../../stores/tripStore'
 
-const CreatedTripsList = () => {
+const CreatedTripsList = ({ navigation, profileId }) => {
 
     const userCreatedTrip = tripStore.trips.filter(trip =>
-        trip.owner === authStore.user._id)
+        trip.owner === profileId
+    );
     
     //Need to Add onPress to the mapped component to redirect user to detail page
     //Need to Wrap the list in a horizontal scroll

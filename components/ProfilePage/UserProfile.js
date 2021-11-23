@@ -25,17 +25,15 @@ const UserProfile = ({ navigation, route }) => {
     }
     const selectedProfile = route.params.profile;
 
-    console.log(selectedProfile);
-
     return (
         <Center>
             <Container  mt="2">
 
-                    <UserAvatar image={ selectedProfile.image } username={ selectedProfile.user.username } />
+                <UserAvatar image={selectedProfile.image} username={selectedProfile.user.username} profile={ selectedProfile  }/>
                 <Divider />
                 
                 <Heading size="md">Created Trips</Heading>
-                <CreatedTripsList />
+                <CreatedTripsList navigation={ navigation } profileId={ selectedProfile.user._id } />
 
                 
                 <Divider />
