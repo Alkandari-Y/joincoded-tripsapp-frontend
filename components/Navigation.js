@@ -9,6 +9,7 @@ import Signup from "./Auth/Signup";
 import TripList from "./TripList";
 import CreateTrip from "./TripList/CreateTrip";
 import UserProfile from "./ProfilePage/UserProfile";
+import TripDetail from "./TripDetail";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -31,7 +32,18 @@ const Navigation = () => {
       <Screen name="TripList" component={TripList} />
       <Screen name="CreateTrip" component={CreateTrip} />
       <Screen name="Profile" component={UserProfile} />
-      
+      <Screen
+        name="TripDetail"
+        component={TripDetail}
+        options={({ navigation, route }) => {
+          return {
+            headerStyle: {
+              backgroundColor: "#356290",
+            },
+            title: route.params.trip.title,
+          };
+        }}
+      />
     </Navigator>
   );
 };

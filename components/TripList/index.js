@@ -1,15 +1,11 @@
 import { observer } from "mobx-react";
 import { View } from "react-native";
 import React from "react";
-import { Button, Spinner, Text } from "native-base";
+import { Spinner } from "native-base";
 import tripStore from "../../stores/tripStore";
 import TripItem from "./TripItem";
 
 const TripList = ({ navigation }) => {
-  // const handleCreate = () => {
-  //   tripStore.createTrip();
-  // };
-
   if (tripStore.isLoading) {
     return <Spinner />;
   }
