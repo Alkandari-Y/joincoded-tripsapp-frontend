@@ -28,6 +28,29 @@ class TripStore {
       console.log(error);
     }
   };
+  updateTrip = async (tripId, updatedTrip) => {
+    try {
+      const res = await instance.put(`/trips/${tripId}`, updatedTrip);
+      this.trips = this.trips.map((trip) => {
+        if (trip._id === tripId) {
+          return res.data;
+        } else {
+          return trip;
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  deleteTrip = async (tripId) => {
+    try {
+      await instance.delete(`/trips/${tripId}`);
+      this.trips = this.trips.filter((trip) => trip._id !== tripId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const tripStore = new TripStore();
