@@ -2,7 +2,7 @@ import React from "react";
 //Navigation
 import { createStackNavigator } from "@react-navigation/stack";
 //Components
-import Home from "./Home/Home";
+import Home from "./Home";
 import MenuIcon from "./MenuIcon";
 import Signin from "./Auth/Signin";
 import Signup from "./Auth/Signup";
@@ -16,7 +16,7 @@ const Navigation = () => {
 
   return (
     <Navigator
-      initialRouteName="TripList"
+      initialRouteName="Home"
       screenOptions={({ navigation }) => {
         return {
           headerStyle: {

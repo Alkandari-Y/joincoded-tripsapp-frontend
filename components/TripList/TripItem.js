@@ -1,28 +1,39 @@
 import React from "react";
 import { Text } from "react-native";
-import { HStack, Image, Pressable } from "native-base";
+import { Center, Container, HStack, Image, Pressable, View } from "native-base";
 import { baseUrl } from "../../stores/baseUrl";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    <Pressable
-      onPress={() => {
-        navigation.navigate("TripDetail", { trip: trip });
+    <View
+      style={{
+        backgroundColor: "cyan",
+        margin: "1%",
+        width: "50%",
+        alignSelf: "center",
+        alignItems: "center",
+        borderRadius: 10,
       }}
     >
-      <HStack w="100%" alignItems="center" space="3">
-        {trip.image && (
-          <Image
-            source={{
-              uri: baseUrl + trip.image,
-            }}
-            alt="image"
-            style={{ width: 100, height: 100 }}
-          />
-        )}
-        <Text>{trip.title}</Text>
-      </HStack>
-    </Pressable>
+      <Pressable
+        onPress={() => {
+          navigation.navigate("TripDetail", { trip: trip });
+        }}
+      >
+        <HStack>
+          {/* {trip.image && (
+            <Image
+              source={{
+                uri: baseUrl + trip.image,
+              }}
+              alt="image"
+              style={{ width: 100, height: 100 }}
+            />
+          )} */}
+          <Text>{trip.title}</Text>
+        </HStack>
+      </Pressable>
+    </View>
   );
 };
 
