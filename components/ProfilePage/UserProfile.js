@@ -16,7 +16,7 @@ import authStore from '../../stores/authStore'
 import profileStore from '../../stores/profileStore'
 //Components
 import UserAvatar from './UserAvatar'
-import FavPlaces from './FavPlaces'
+import CreatedTripsList from './CreatedTripsList'
 
 const UserProfile = ({ navigation, route }) => {
     
@@ -34,8 +34,8 @@ const UserProfile = ({ navigation, route }) => {
                     <UserAvatar image={ selectedProfile.image } username={ selectedProfile.user.username } />
                 <Divider />
                 
-                <Heading size="md">Place To Go</Heading>
-                <FavPlaces />
+                <Heading size="md">Created Trips</Heading>
+                <CreatedTripsList />
 
                 
                 <Divider />
