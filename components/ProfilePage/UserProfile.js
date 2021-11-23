@@ -16,7 +16,7 @@ import authStore from '../../stores/authStore'
 import profileStore from '../../stores/profileStore'
 //Components
 import UserAvatar from './UserAvatar'
-import FavPlaces from './FavPlaces'
+import CreatedTripsList from './CreatedTripsList'
 
 const UserProfile = ({ navigation, route }) => {
     
@@ -25,17 +25,15 @@ const UserProfile = ({ navigation, route }) => {
     }
     const selectedProfile = route.params.profile;
 
-    console.log(selectedProfile);
-
     return (
         <Center>
             <Container  mt="2">
 
-                    <UserAvatar image={ selectedProfile.image } username={ selectedProfile.user.username } />
+                <UserAvatar image={selectedProfile.image} username={selectedProfile.user.username} profile={ selectedProfile  }/>
                 <Divider />
                 
-                <Heading size="md">Place To Go</Heading>
-                <FavPlaces />
+                <Heading size="md">Created Trips</Heading>
+                <CreatedTripsList navigation={ navigation } profileId={ selectedProfile.user._id } />
 
                 
                 <Divider />
