@@ -1,6 +1,10 @@
 import React from "react";
 import { Text } from "react-native";
-import { Button, HStack, Image, Pressable } from "native-base";
+Fe-CRUDS
+import { Button} from "native-base";
+
+import { Center, Container, HStack, Image, Pressable, View } from "native-base";
+
 import { baseUrl } from "../../stores/baseUrl";
 import tripStore from "../../stores/tripStore";
 import { observer } from "mobx-react";
@@ -12,11 +16,17 @@ const TripItem = ({ trip, navigation }) => {
   };
 
   return (
-    <Pressable
-      onPress={() => {
-        navigation.navigate("TripDetail", { trip: trip });
+    <View
+      style={{
+        backgroundColor: "cyan",
+        margin: "1%",
+        width: "50%",
+        alignSelf: "center",
+        alignItems: "center",
+        borderRadius: 10,
       }}
     >
+
       <HStack w="100%" alignItems="center" space="3">
         {trip.image && (
           <Image
@@ -46,6 +56,7 @@ const TripItem = ({ trip, navigation }) => {
         </Button>
       )}
     </Pressable>
+
   );
 };
 

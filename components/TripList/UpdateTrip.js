@@ -1,3 +1,4 @@
+
 import { Button, FormControl, Input } from "native-base";
 import React, { useState } from "react";
 import { View } from "react-native";
@@ -31,7 +32,7 @@ const UpdateTrip = (props) => {
       <Button mt="2" colorScheme="indigo" onPress={handleUpdate}>
         update Trip
       </Button>
-    </View>
+
   );
 };
 
