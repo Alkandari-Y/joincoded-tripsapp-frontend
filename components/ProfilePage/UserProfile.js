@@ -18,24 +18,20 @@ import profileStore from '../../stores/profileStore'
 import UserAvatar from './UserAvatar'
 import FavPlaces from './FavPlaces'
 
-const UserProfile = ({ navigation, props }) => {
-
-    let selectedProfile;
-
-    // const FavList = userProfile.profile.favoriteTrips.map(trip => (<FavPlaces key={TripItem._id} trip={trip}/>))
+const UserProfile = ({ navigation, route }) => {
     
-    if (profileStore.isLoading) {
+    if (!profileStore.isLoading) {
         return <Spinner />;
     }
-    console.log(profileStore.accountProfile)
-    selectedProfile = profileStore.accountProfile;
+    const selectedProfile = route.params.profile;
 
+    console.log(selectedProfile);
 
     return (
         <Center>
             <Container  mt="2">
 
-                    <UserAvatar image={ selectedProfile.image } username={ selectedProfile.username } />
+                    <UserAvatar image={ selectedProfile.image } username={ selectedProfile.user.username } />
                 <Divider />
                 
                 <Heading size="md">Place To Go</Heading>

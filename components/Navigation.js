@@ -32,7 +32,7 @@ const Navigation = () => {
       <Screen name="Home" component={Home} />
       <Screen name="TripList" component={TripList} />
       <Screen name="CreateTrip" component={CreateTrip} />
-      <Screen name="updateTrip" component={UpdateTrip} />
+      <Screen name="UpdateTrip" component={UpdateTrip} />
       <Screen name="Profile" component={UserProfile} />
       <Screen
         name="TripDetail"

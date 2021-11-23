@@ -1,5 +1,3 @@
-//JWT
-import decode from "jwt-decode";
 //Mobx
 import { makeAutoObservable } from "mobx";
 //Axios Instance
@@ -10,26 +8,22 @@ class ProfileStore {
         makeAutoObservable(this);
     }
     
-    accountProfile = null;
+
+    profiles = [];
     isLoading = true;
 
-    getSelectedProfile = async (username) => {
-        this.isLoading = true;
+    getProfilesList = async () => {
         try {
-            const res = await instance.get(`/userProfile/${username}`);
-            this.accountProfile = res.data;
-            this.isLoading = false;
+            const res = await instance.get('profiles');
+            this.profiles = res.data;
+            this.loading = false;
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
 
-    updateProfile = async (updatedProfile) => {
+    updateProfile = async (updatedProfile, profileId) => {
         try {
-            const res = await instance.put(`/userProfile`, updatedProfile);
-            const profile = this.accountProfile.find((profile) =>
-             profile._id === updatedProfile._id);
-            for (const key in profile) profile[key] = updatedProfile[key];
         } catch (error) {
             console.error(error);
         }
@@ -37,4 +31,5 @@ class ProfileStore {
 }
 
 const profileStore = new ProfileStore();
+profileStore.getProfilesList();
 export default profileStore;
