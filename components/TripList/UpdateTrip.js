@@ -28,11 +28,12 @@ const UpdateTrip = (props) => {
         <Input
           onChangeText={(description) => setTrip({ ...trip, description })}
         />
+        <Button mt="2" colorScheme="indigo" onPress={handleUpdate}>
+          update Trip
+        </Button>
       </FormControl>
-      <Button mt="2" colorScheme="indigo" onPress={handleUpdate}>
-        update Trip
-      </Button>
 
+    </View>
   );
 };
 

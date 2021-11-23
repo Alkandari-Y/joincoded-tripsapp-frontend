@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
-Fe-CRUDS
+// Fe-CRUDS
 import { Button} from "native-base";
 
 import { Center, Container, HStack, Image, Pressable, View } from "native-base";
@@ -43,19 +43,19 @@ const TripItem = ({ trip, navigation }) => {
       {authStore.user?._id === trip.owner && (
         <Button onPress={handleDelete}>Delete Trip</Button>
       )}
-      {authStore.user?._id === trip.owner && (
-        <Button onPress={handleUpdate}>update Trip</Button>
+      {/* {authStore.user?._id === trip.owner && (
+        <Button onPress={navigation.navigate('UpdateTrip')}>update Trip</Button>
       )}
       {authStore.user?._id === trip.owner && (
         <Button
           onPress={
-            (() => navigation.navigate("UpdateTrip"), { trip: props.trip })
+            (() => navigation.navigate("UpdateTrip"), { trip: trip })
           }
         >
           update Trip
         </Button>
-      )}
-    </Pressable>
+      )} */}
+    </View>
 
   );
 };

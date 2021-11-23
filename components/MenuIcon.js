@@ -21,14 +21,20 @@ import profileStore from "../stores/profileStore";
 
 const MenuIcon = ({ navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclose();
+  
+  
+
 
   const openAuthPage = (pageName) => {
     navigation.navigate(pageName);
   };
 
   const handleUserProfileNav = () => {
-    profileStore.getSelectedProfile(authStore.user.username);
-    navigation.navigate('Profile');
+    const profile = profileStore.profiles.find(
+      profile => profile.user._id === authStore.user._id
+    );
+    console.log(profile)
+    navigation.navigate('Profile', {profile : profile}) ;
   }
 
   return (
