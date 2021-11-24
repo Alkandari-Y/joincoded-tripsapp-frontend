@@ -27,11 +27,16 @@ const MenuIcon = ({ navigation }) => {
   };
 
   const handleUserProfileNav = () => {
-    const profile = profileStore.profiles.find(
-      (profile) => profile.user._id === authStore.user._id
-    );
-    console.log(profile);
-    navigation.navigate("Profile", { profile: profile });
+    // const profile = profileStore.profiles.find(
+    //   (profile) => {
+    //      authStore.user._id === profile.user._id
+    //     console.log(profile.user._id, authStore.user._id);
+    //     console.log(profile)
+    //   }
+      
+    // );
+    
+    navigation.navigate("Profile", { profile: profileStore.userProfile });
   };
 
   return (

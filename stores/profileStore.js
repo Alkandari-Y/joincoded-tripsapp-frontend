@@ -8,7 +8,7 @@ class ProfileStore {
         makeAutoObservable(this);
     }
     
-
+    userProfile = null;
     profiles = [];
     isLoading = true;
 
@@ -17,6 +17,24 @@ class ProfileStore {
             const res = await instance.get('/profiles');
             this.profiles = res.data;
             this.loading = false;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    setUserProfile = (userId) => {
+        const foundProfile = this.profiles.find(profile=> userId === profile.user._id)
+        this.userProfile = foundProfile;
+    }
+
+    pushSignUpProfile = async () => {
+        try {
+            const res = await instance.get(`profiles/newUser/`);
+            this.profiles.push(res.data);
+            this.userProfile = res.data;
+            console.log('res data', res.data)
+            console.log('profiles list', this.profiles)
+            console.log('userProfile', this.userProfile)
         } catch (error) {
             console.log(error)
         }

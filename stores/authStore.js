@@ -6,6 +6,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 //AsyncStorage
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import profileStore from './profileStore'
 
 class AuthStore {
   constructor() {
@@ -36,7 +37,6 @@ class AuthStore {
   signIn = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/signin", user);
-      console.log(res.data.token);
       await this.setUser(res.data.token);
       toast.show({
         title: "Welcome",
@@ -59,6 +59,7 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", user);
       await this.setUser(res.data.token);
+      await profileStore.pushSignUpProfile()
       navigation.navigate("Home");
       toast.show({
         title: "Welcome",
