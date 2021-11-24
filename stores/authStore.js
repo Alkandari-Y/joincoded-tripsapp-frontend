@@ -15,18 +15,15 @@ class AuthStore {
   user = null;
 
   setUser = async (token) => {
-    const userToken = JSON.stringify(token);
-    await AsyncStorage.setItem("userToken", userToken);
+    await AsyncStorage.setItem("userToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
   };
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("userToken");
-    // console.log(token);
     if (token) {
       const tempUser = decode(token);
-      // console.log(token)
       const exp = tempUser.exp * 1000;
       if (exp > Date.now()) {
         this.setUser(token);
