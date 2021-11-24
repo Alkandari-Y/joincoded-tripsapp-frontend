@@ -22,11 +22,11 @@ class TripStore {
 
   createTrip = async (trip, navigation, toast) => {
     try {
-			const formData = new FormData();
-			for (const key in trip) {
-				formData.append(key, trip[key]);
-			}
-
+      const formData = new FormData();
+      for (const key in trip) {
+        formData.append(key, trip[key]);
+      }
+      
 			const res = await instance.post("/trips", formData);
       this.trips.push(res.data);
       const newTrip = this.trips.find(trip => trip._id === res.data._id)
@@ -36,6 +36,7 @@ class TripStore {
         placement: "top",
       });
       navigation.navigate("TripDetail", {trip: newTrip });
+
     } catch (error) {
       console.log(error);
       toast.show({
@@ -46,6 +47,7 @@ class TripStore {
       });
     }
   };
+  
   updateTrip = async (tripId, updatedTrip, navigation, toast) => {
     try {
 

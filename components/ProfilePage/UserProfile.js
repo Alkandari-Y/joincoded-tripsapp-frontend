@@ -1,7 +1,8 @@
 //React
-import React, { useState } from 'react'
+import React, { useState } from "react";
 //Native Base
 import {
+
     Stack,
     Center,
     Heading,
@@ -10,15 +11,16 @@ import {
     Spinner,
     Button
   } from "native-base"
+
 //Mobx
-import { observer } from 'mobx-react'
+import { observer } from "mobx-react";
 //Store
-import authStore from '../../stores/authStore'
-import profileStore from '../../stores/profileStore'
+import authStore from "../../stores/authStore";
+import profileStore from "../../stores/profileStore";
 //Components
+
 import UserAvatar from './UserAvatar'
 import CreatedTripsList from './CreatedTripsList'
-import { concat } from 'react-native-reanimated'
 
 const UserProfile = ({ navigation, route }) => {
     
@@ -26,7 +28,7 @@ const UserProfile = ({ navigation, route }) => {
         return <Spinner />;
     }
     const selectedProfile = route.params.profile;
-    console.log(selectedProfile)
+
     return (
         <Center>
             <Container  mt="2">
