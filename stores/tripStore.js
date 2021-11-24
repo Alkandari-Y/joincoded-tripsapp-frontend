@@ -22,13 +22,13 @@ class TripStore {
 
   createTrip = async (trip, navigation, toast) => {
     try {
-			const formData = new FormData();
-			for (const key in trip) {
-				formData.append(key, trip[key]);
-			}
+      const formData = new FormData();
+      for (const key in trip) {
+        formData.append(key, trip[key]);
+      }
 
-			const response = await instance.post("/trips", formData);
-			this.trips.push(response.data);
+      const response = await instance.post("/trips", formData);
+      this.trips.push(response.data);
     } catch (error) {
       console.log(error);
     }

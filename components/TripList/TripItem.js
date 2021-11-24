@@ -64,7 +64,7 @@ const TripItem = ({ trip, navigation }) => {
             px="3"
             py="1.5"
           >
-            PHOTOS
+            {trip.owner}
           </Center>
         </Box>
         <Stack p="4" space={3}>
@@ -87,7 +87,7 @@ const TripItem = ({ trip, navigation }) => {
               Description:
             </Text>
           </Stack>
-          <Text fontWeight="400">{trip.description}</Text>
+          <Text>{trip.description}</Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">
               <Text

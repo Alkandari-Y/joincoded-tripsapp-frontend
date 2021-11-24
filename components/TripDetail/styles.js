@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     backgroundColor: "pink",
   },
+  profileContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
   profilePic: {
     display: "flex",
     justifyContent: "center",
@@ -24,8 +28,15 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginBottom: "5%",
     marginLeft: "5%",
+    marginRight: "5%",
   },
-  buttons: { width: "25%", marginLeft: "5%" },
+  buttons: {
+    display: "flex",
+    marginTop: "7%",
+  },
+  buttonSpace: {
+    marginTop: "5%",
+  },
   descriptionContainer: {
     width: "95%",
     height: "20%",
