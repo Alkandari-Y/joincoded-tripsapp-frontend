@@ -10,8 +10,8 @@ import {
   Stack,
   Pressable,
 } from "native-base";
-import profileStore from "../../stores/profileStore";
 import { observer } from "mobx-react";
+import { baseUrl } from "../../stores/baseUrl";
 
 const TripItem = ({ trip, navigation }) => {
   return (
@@ -26,6 +26,8 @@ const TripItem = ({ trip, navigation }) => {
         overflow="hidden"
         borderColor="coolGray.200"
         borderWidth="1"
+        margin="auto"
+        marginBottom="5%"
         _dark={{
           borderColor: "coolGray.600",
           backgroundColor: "gray.700",
@@ -42,13 +44,13 @@ const TripItem = ({ trip, navigation }) => {
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
               source={{
-                uri: "https://static.officeholidays.com/images/1280x853c/kuwait-01.jpg",
+                uri: baseUrl + trip.image,
               }}
               alt="image"
             />
           </AspectRatio>
           <Center
-            bg="violet.500"
+            bg="#FFBA08"
             _dark={{
               bg: "violet.400",
             }}

@@ -33,14 +33,14 @@ const Home = ({ navigation }) => {
       >
         <VStack space={5} alignItems="center">
           <NativeBaseIcon />
-          <Heading size="lg">Welcome to localhost:8000</Heading>
+          <Heading size="lg">Voyager</Heading>
           <ToggleDarkMode />
           <Button
             onPress={() => {
               navigation.navigate("TripList");
             }}
           >
-            Yarn start your Journey~!
+            Chart your course now!
           </Button>
         </VStack>
       </Center>

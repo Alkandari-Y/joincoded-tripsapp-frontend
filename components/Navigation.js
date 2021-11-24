@@ -29,11 +29,19 @@ const Navigation = () => {
         component={Home}
         options={{
           headerStyle: {
-            backgroundColor: "#21D19F",
+            backgroundColor: "#0075C4",
           },
         }}
       />
-      <Screen name="TripList" component={TripList} />
+      <Screen
+        name="TripList"
+        component={TripList}
+        options={{
+          headerStyle: {
+            backgroundColor: "#FFBA08",
+          },
+        }}
+      />
       <Screen
         name="TripDetail"
         component={TripDetail}
