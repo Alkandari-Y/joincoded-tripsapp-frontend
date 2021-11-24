@@ -14,7 +14,7 @@ class ProfileStore {
 
     getProfilesList = async () => {
         try {
-            const res = await instance.get('profiles');
+            const res = await instance.get('/profiles');
             this.profiles = res.data;
             this.loading = false;
         } catch (error) {
