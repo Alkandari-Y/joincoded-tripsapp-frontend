@@ -1,10 +1,18 @@
 import { observer } from "mobx-react";
-import { Spinner, Image, Pressable, Button } from "native-base";
+import {
+  Spinner,
+  Image,
+  Pressable,
+  Button,
+  Box,
+  ScrollView,
+} from "native-base";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import tripStore from "../../stores/tripStore";
 import { baseUrl } from "../../stores/baseUrl";
 import authStore from "../../stores/authStore";
+import styles from "./styles";
 
 const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
@@ -17,49 +25,33 @@ const TripDetail = ({ route, navigation }) => {
     navigation.navigate("TripList");
   };
   return (
-    <Pressable
-      onPress={() => navigation.navigate("TripDetail", { trip: trip })}
-    >
-      <View style={styles.tripDetailWrapper}>
-        <Image
-          style={styles.tripDetailImage}
-          source={{ uri: baseUrl + trip.image }}
-          alt="image"
-        />
-        <Text style={styles.tripDetailTitle}>{trip.description}</Text>
-        {authStore.user?._id === trip.owner && (
-          <Button.Group
-            colorScheme="blue"
-            mx={{
-              base: "auto",
-              md: 0,
-            }}
-            size="sm"
-          >
-            <Button onPress={handleDelete}>Delete Trip</Button>
-            <Button
-              onPress={() => navigation.navigate("UpdateTrip", { trip: trip })}
-            >
-              update Trip
-            </Button>
-          </Button.Group>
-        )}
-      </View>
-    </Pressable>
+    <View style={styles.background}>
+      <Image
+        style={styles.Image}
+        source={{ uri: baseUrl + trip.image }}
+        alt="image"
+      />
+      <Box>
+        <Box style={styles.profilePic}>Profile Picture</Box>
+        <Box style={styles.buttons}>
+          {authStore.user?._id === trip.owner && (
+            <>
+              <Button
+                onPress={() =>
+                  navigation.navigate("UpdateTrip", { trip: trip })
+                }
+              >
+                Update Trip
+              </Button>
+              <Button onPress={handleDelete}>Delete Trip</Button>
+            </>
+          )}
+        </Box>
+      </Box>
+      <ScrollView style={styles.descriptionContainer}>
+        <Text>{trip.description}</Text>
+      </ScrollView>
+    </View>
   );
 };
 export default observer(TripDetail);
-
-const styles = StyleSheet.create({
-  tripDetailWrapper: {
-    marginTop: 50,
-  },
-  tripDetailImage: {
-    width: 150,
-    height: 150,
-  },
-  tripDetailTitle: {
-    fontWeight: "bold",
-    fontSize: 40,
-  },
-});
