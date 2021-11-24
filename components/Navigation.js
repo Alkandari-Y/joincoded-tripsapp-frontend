@@ -20,20 +20,20 @@ const Navigation = () => {
       initialRouteName="Home"
       screenOptions={({ navigation }) => {
         return {
-          headerStyle: {
-            backgroundColor: "#DBF9F0",
-          },
           headerRight: () => <MenuIcon navigation={navigation} />,
         };
       }}
     >
-      <Screen name="Signup" component={Signup} />
-      <Screen name="Signin" component={Signin} />
-      <Screen name="Home" component={Home} />
+      <Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerStyle: {
+            backgroundColor: "#21D19F",
+          },
+        }}
+      />
       <Screen name="TripList" component={TripList} />
-      <Screen name="CreateTrip" component={CreateTrip} />
-      <Screen name="UpdateTrip" component={UpdateTrip} />
-      <Screen name="Profile" component={UserProfile} />
       <Screen
         name="TripDetail"
         component={TripDetail}
@@ -46,6 +46,11 @@ const Navigation = () => {
           };
         }}
       />
+      <Screen name="Profile" component={UserProfile} />
+      <Screen name="Signup" component={Signup} />
+      <Screen name="Signin" component={Signin} />
+      <Screen name="CreateTrip" component={CreateTrip} />
+      <Screen name="UpdateTrip" component={UpdateTrip} />
     </Navigator>
   );
 };
