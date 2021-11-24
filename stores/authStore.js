@@ -15,6 +15,7 @@ class AuthStore {
   user = null;
 
   setUser = async (token) => {
+    // QUESTION: Why are you stringifying the token?
     const userToken = JSON.stringify(token);
     await AsyncStorage.setItem("userToken", userToken);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -23,6 +24,7 @@ class AuthStore {
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("userToken");
+    // REVIEW: Remove comments
     // console.log(token);
     if (token) {
       const tempUser = decode(token);
@@ -39,6 +41,7 @@ class AuthStore {
   signIn = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/signin", user);
+      // REVIEW: Remove console logs
       console.log(res.data.token);
       await this.setUser(res.data.token);
       toast.show({

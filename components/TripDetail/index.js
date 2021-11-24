@@ -25,6 +25,7 @@ const TripDetail = ({ route }) => {
 };
 export default observer(TripDetail);
 
+// REVIEW: Move styling into its own file
 const styles = StyleSheet.create({
   tripDetailWrapper: {
     marginTop: 50,

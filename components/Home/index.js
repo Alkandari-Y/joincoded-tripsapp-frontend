@@ -32,6 +32,7 @@ const Home = ({ navigation }) => {
         height={Dimensions.get("window").height}
       >
         <VStack space={5} alignItems="center">
+          {/* REVIEW: THis is default text and images, fix pls */}
           <NativeBaseIcon />
           <Heading size="lg">Welcome to localhost:8000</Heading>
           <ToggleDarkMode />

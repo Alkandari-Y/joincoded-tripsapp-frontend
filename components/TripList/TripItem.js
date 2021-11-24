@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 // Fe-CRUDS
-import { Button} from "native-base";
+import { Button } from "native-base";
 
 import { Center, Container, HStack, Image, Pressable, View } from "native-base";
 
@@ -9,13 +9,14 @@ import { baseUrl } from "../../stores/baseUrl";
 import tripStore from "../../stores/tripStore";
 import { observer } from "mobx-react";
 import authStore from "../../stores/authStore";
-
+// REVIEW: Remove unused imports
 const TripItem = ({ trip, navigation }) => {
   const handleDelete = () => {
     tripStore.deleteTrip(trip._id);
   };
 
   return (
+    // REVIEW: Move inline styling to styles.js
     <View
       style={{
         backgroundColor: "cyan",
@@ -26,7 +27,6 @@ const TripItem = ({ trip, navigation }) => {
         borderRadius: 10,
       }}
     >
-
       <HStack w="100%" alignItems="center" space="3">
         {trip.image && (
           <Image
@@ -56,7 +56,6 @@ const TripItem = ({ trip, navigation }) => {
         </Button>
       )} */}
     </View>
-
   );
 };
 

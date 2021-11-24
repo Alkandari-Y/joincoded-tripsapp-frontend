@@ -37,6 +37,7 @@ const Navigation = () => {
       <Screen
         name="TripDetail"
         component={TripDetail}
+        // REVIEW: Remove unused arguments
         options={({ navigation, route }) => {
           return {
             headerStyle: {

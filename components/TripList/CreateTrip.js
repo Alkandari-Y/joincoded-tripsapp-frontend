@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import tripStore from "../../stores/tripStore";
 
+// REVIEW: Better naming: TripForm
 const CreateTrip = ({ navigation }) => {
   const toast = useToast;
 
