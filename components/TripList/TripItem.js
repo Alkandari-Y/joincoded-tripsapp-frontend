@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Box,
   Heading,
@@ -15,11 +14,6 @@ import profileStore from "../../stores/profileStore";
 import { observer } from "mobx-react";
 
 const TripItem = ({ trip, navigation }) => {
-  const ownerProfile = profileStore.profiles.find(
-    (profile) => profile.user._id === trip.owner
-  );
-
-
   return (
     <Pressable
       onPress={() => {
@@ -45,7 +39,6 @@ const TripItem = ({ trip, navigation }) => {
         }}
       >
         <Box>
-          <Text>{ownerProfile.user.username}</Text>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
               source={{
