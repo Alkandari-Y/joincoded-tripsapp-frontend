@@ -7,7 +7,8 @@ import {
     Heading,
     Divider,
     Container,
-    Spinner
+    Spinner,
+    Button
   } from "native-base"
 //Mobx
 import { observer } from 'mobx-react'
@@ -17,6 +18,7 @@ import profileStore from '../../stores/profileStore'
 //Components
 import UserAvatar from './UserAvatar'
 import CreatedTripsList from './CreatedTripsList'
+import { concat } from 'react-native-reanimated'
 
 const UserProfile = ({ navigation, route }) => {
     
@@ -24,12 +26,12 @@ const UserProfile = ({ navigation, route }) => {
         return <Spinner />;
     }
     const selectedProfile = route.params.profile;
-
+    console.log(selectedProfile)
     return (
         <Center>
             <Container  mt="2">
 
-                <UserAvatar image={selectedProfile.image} username={selectedProfile.user.username} profile={ selectedProfile  }/>
+                <UserAvatar image={selectedProfile.image} username={selectedProfile.user.username} profileId={ selectedProfile._id  }/>
                 <Divider />
                 
                 <Heading size="md">Created Trips</Heading>
@@ -39,11 +41,23 @@ const UserProfile = ({ navigation, route }) => {
                 <Divider />
                 <Heading size="md">Bio</Heading>
                 <Stack mb="2.5" mt="1.5" direction="column" space={3}>
-                <Center>
-                    { selectedProfile.bio }
-                </Center>
+                    <Center>
+                        { selectedProfile.bio }
+                    </Center>
 
                 </Stack>
+
+                {authStore.user?._id === selectedProfile.user._id && (
+                    <Stack mb="2.5" mt="1.5" direction="column" space={3}>
+                        <Button
+                            onPress={() =>
+                            navigation.navigate("UserUpdateProfile", { userProfile: selectedProfile })
+                            }
+                        >
+                            Update Profile
+                        </Button>
+                    </Stack>
+                )}
 
 
             </Container>

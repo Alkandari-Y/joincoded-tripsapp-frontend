@@ -6,9 +6,10 @@ import tripStore from "../../stores/tripStore";
 //Expo
 import * as ImagePicker from 'expo-image-picker';
 
-// i'm still working on this, i'm taking a break- will continue later.
 const UpdateTrip = ({ route, navigation }) => {
+
   const { trip } = route.params;
+  
   const [_trip, setTrip] = useState({
     title: trip.title,
     image: trip.image,
@@ -23,7 +24,6 @@ const UpdateTrip = ({ route, navigation }) => {
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
             aspect: [4, 3],
-
             quality: 1,
         });
 
@@ -45,7 +45,6 @@ const UpdateTrip = ({ route, navigation }) => {
 
   const handleUpdate = async () => {
     tripStore.updateTrip(trip._id, _trip, navigation, toast);
-    // navigation.goBack("TripDetail", { trip: _trip });
   };
   return (
     <View>
@@ -57,13 +56,9 @@ const UpdateTrip = ({ route, navigation }) => {
       <FormControl>
           <FormControl.Label>Choose An Image to Upload</FormControl.Label>
           <Button title="Pick an image from camera roll" onPress={_pickImage} />
-          {/* {newImage && <Image source={{ uri: newImage }} style={{ width: 200, height: 200 }} />} */}
+
       </FormControl>
-      
-      {/* <FormControl>
-        <FormControl.Label>updated Image:</FormControl.Label>
-        <Input onChangeText={(image) => setTrip({ ..._trip, image })} />
-      </FormControl> */}
+
       <FormControl>
         <FormControl.Label>updated Description:</FormControl.Label>
         <Input
