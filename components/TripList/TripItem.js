@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Box,
   Heading,
@@ -17,6 +18,7 @@ const TripItem = ({ trip, navigation }) => {
   const ownerProfile = profileStore.profiles.find(
     (profile) => profile.user._id === trip.owner
   );
+
 
   return (
     <Pressable
