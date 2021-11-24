@@ -32,9 +32,6 @@ class ProfileStore {
             const res = await instance.get(`profiles/newUser/`);
             this.profiles.push(res.data);
             this.userProfile = res.data;
-            console.log('res data', res.data)
-            console.log('profiles list', this.profiles)
-            console.log('userProfile', this.userProfile)
         } catch (error) {
             console.log(error)
         }

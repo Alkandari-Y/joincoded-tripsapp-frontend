@@ -1,4 +1,4 @@
-import { Button, FormControl, Input } from "native-base";
+import { Button, FormControl, Input, useToast } from "native-base";
 import React, { useState } from "react";
 import { Text, View } from "react-native";
 
@@ -14,6 +14,8 @@ const UpdateTrip = ({ route, navigation }) => {
     image: trip.image,
     description: trip.description,
   });
+
+  const toast = useToast()
 
   const _pickImage = async () => {
     try {
@@ -42,8 +44,8 @@ const UpdateTrip = ({ route, navigation }) => {
   };
 
   const handleUpdate = async () => {
-    tripStore.updateTrip(trip._id, _trip);
-    navigation.goBack("TripDetail", { trip: _trip });
+    tripStore.updateTrip(trip._id, _trip, navigation, toast);
+    // navigation.goBack("TripDetail", { trip: _trip });
   };
   return (
     <View>
