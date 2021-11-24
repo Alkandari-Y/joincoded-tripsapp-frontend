@@ -6,7 +6,7 @@ import tripStore from "../../stores/tripStore";
 import * as ImagePicker from 'expo-image-picker';
 
 const CreateTrip = ({ navigation }) => {
-  const toast = useToast;
+  const toast = useToast();
 
   const [trip, setTrip] = useState({
     title: "",

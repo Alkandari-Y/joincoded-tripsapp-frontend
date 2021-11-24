@@ -27,16 +27,8 @@ const MenuIcon = ({ navigation }) => {
   };
 
   const handleUserProfileNav = () => {
-    // const profile = profileStore.profiles.find(
-    //   (profile) => {
-    //      authStore.user._id === profile.user._id
-    //     console.log(profile.user._id, authStore.user._id);
-    //     console.log(profile)
-    //   }
-      
-    // );
-    if(!profileStore.userProfile)profileStore.setUserProfile(authStore.user._id)
-    console.log(profileStore.userProfile)
+
+    if (!profileStore.userProfile) profileStore.setUserProfile(authStore.user._id);
     
     navigation.navigate("Profile", { profile: profileStore.userProfile });
   };
@@ -67,10 +59,8 @@ const MenuIcon = ({ navigation }) => {
                   </Actionsheet.Item>
                 )}
 
-                <Actionsheet.Item
-                  onPress={() => navigation.navigate("CreateTrip")}
-                >
-                  Create Trip
+                <Actionsheet.Item>
+                  <Button onPress={() => navigation.navigate("CreateTrip")}>Create Trip</Button>
                 </Actionsheet.Item>
 
                 <Actionsheet.Item>

@@ -32,21 +32,24 @@ class ProfileStore {
             const res = await instance.get(`profiles/newUser/`);
             this.profiles.push(res.data);
             this.userProfile = res.data;
-            console.log('res data', res.data)
-            console.log('profiles list', this.profiles)
-            console.log('userProfile', this.userProfile)
         } catch (error) {
             console.log(error)
         }
     }
 
-    updateProfile = async (updatedProfile, profileId) => {
+    updateProfile = async (updatedProfile, profileId,  navigation, toast) => {
         try {
-            const formData = new formData();
+            const foundProfile = this.profiles.find(profile => profile._id === profileId)
+            const formData = new FormData();
             for (const key in updatedProfile) {
                 formData.append(key, updatedProfile[key]);
             }
-            const res = await instance.put(`/profiles/${profileId}`, formData)
+
+            const res = await instance.put(`/profiles/${profileId}`, formData);
+            console.log(foundProfile)
+            for (const key in foundProfile) foundProfile[key] = res.data[key];
+            this.userProfile = res.data
+            navigation.navigate("Profile", { profile: this.userProfile })
         } catch (error) {
             console.error(error);
         }
