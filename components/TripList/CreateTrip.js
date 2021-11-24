@@ -14,6 +14,7 @@ const CreateTrip = ({ navigation }) => {
 
   const handleSubmit = () => {
     tripStore.createTrip(trip, navigation, toast);
+    navigation.navigate("TripList");
   };
 
   return (

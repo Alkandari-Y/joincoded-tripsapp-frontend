@@ -21,9 +21,6 @@ import profileStore from "../stores/profileStore";
 
 const MenuIcon = ({ navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclose();
-  
-  
-
 
   const openAuthPage = (pageName) => {
     navigation.navigate(pageName);
@@ -31,11 +28,11 @@ const MenuIcon = ({ navigation }) => {
 
   const handleUserProfileNav = () => {
     const profile = profileStore.profiles.find(
-      profile => profile.user._id === authStore.user._id
+      (profile) => profile.user._id === authStore.user._id
     );
-    console.log(profile)
-    navigation.navigate('Profile', {profile : profile}) ;
-  }
+    console.log(profile);
+    navigation.navigate("Profile", { profile: profile });
+  };
 
   return (
     <Center>
@@ -56,21 +53,25 @@ const MenuIcon = ({ navigation }) => {
                 </Actionsheet.Item>
               </>
             ) : (
-            <>
-                {authStore.user && 
-                    <Actionsheet.Item>Hello {authStore.user.username}</Actionsheet.Item> 
-                }
-                
-                <Actionsheet.Item onPress={() => navigation.navigate("CreateTrip")} >
-                    Create Trip
-                </Actionsheet.Item>
-                
-                <Actionsheet.Item >
-                    <Button onPress={handleUserProfileNav} >View Profile</Button>
+              <>
+                {authStore.user && (
+                  <Actionsheet.Item>
+                    Hello {authStore.user.username}
+                  </Actionsheet.Item>
+                )}
+
+                <Actionsheet.Item
+                  onPress={() => navigation.navigate("CreateTrip")}
+                >
+                  Create Trip
                 </Actionsheet.Item>
 
-                <Actionsheet.Item >
-                    <Button onPress={() => authStore.signOut()} >Logout!</Button>
+                <Actionsheet.Item>
+                  <Button onPress={handleUserProfileNav}>View Profile</Button>
+                </Actionsheet.Item>
+
+                <Actionsheet.Item>
+                  <Button onPress={() => authStore.signOut()}>Logout!</Button>
                 </Actionsheet.Item>
               </>
             )}
