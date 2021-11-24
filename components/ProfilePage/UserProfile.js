@@ -1,54 +1,53 @@
 //React
-import React, { useState } from 'react'
+import React, { useState } from "react";
 //Native Base
 import {
-    Stack,
-    Center,
-    Heading,
-    Divider,
-    Container,
-    Spinner
-  } from "native-base"
+  Stack,
+  Center,
+  Heading,
+  Divider,
+  Container,
+  Spinner,
+} from "native-base";
 //Mobx
-import { observer } from 'mobx-react'
+import { observer } from "mobx-react";
 //Store
-import authStore from '../../stores/authStore'
-import profileStore from '../../stores/profileStore'
+import authStore from "../../stores/authStore";
+import profileStore from "../../stores/profileStore";
 //Components
-import UserAvatar from './UserAvatar'
-import CreatedTripsList from './CreatedTripsList'
+import UserAvatar from "./UserAvatar";
+import CreatedTripsList from "./CreatedTripsList";
 
 const UserProfile = ({ navigation, route }) => {
-    
-    if (!profileStore.isLoading) {
-        return <Spinner />;
-    }
-    const selectedProfile = route.params.profile;
+  if (!profileStore.isLoading) {
+    return <Spinner />;
+  }
+  const selectedProfile = route.params.profile;
 
-    return (
-        <Center>
-            <Container  mt="2">
+  return (
+    <Center>
+      <Container mt="2">
+        <UserAvatar
+          image={selectedProfile.image}
+          username={selectedProfile.user.username}
+          profile={selectedProfile}
+        />
+        <Divider />
 
-                <UserAvatar image={selectedProfile.image} username={selectedProfile.user.username} profile={ selectedProfile  }/>
-                <Divider />
-                
-                <Heading size="md">Created Trips</Heading>
-                <CreatedTripsList navigation={ navigation } profileId={ selectedProfile.user._id } />
+        <Heading size="md">Created Trips</Heading>
+        <CreatedTripsList
+          navigation={navigation}
+          profileId={selectedProfile.user._id}
+        />
 
-                
-                <Divider />
-                <Heading size="md">Bio</Heading>
-                <Stack mb="2.5" mt="1.5" direction="column" space={3}>
-                <Center>
-                    { selectedProfile.bio }
-                </Center>
+        <Divider />
+        <Heading size="md">Bio</Heading>
+        <Stack mb="2.5" mt="1.5" direction="column" space={3}>
+          <Center>{selectedProfile.bio}</Center>
+        </Stack>
+      </Container>
+    </Center>
+  );
+};
 
-                </Stack>
-
-
-            </Container>
-        </Center>
-    )
-}
-
-export default observer(UserProfile)
+export default observer(UserProfile);

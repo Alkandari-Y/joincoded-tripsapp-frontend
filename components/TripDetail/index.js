@@ -6,6 +6,7 @@ import {
   Button,
   Box,
   ScrollView,
+  Divider,
 } from "native-base";
 import React from "react";
 import { Text, View } from "react-native";
@@ -31,7 +32,7 @@ const TripDetail = ({ route, navigation }) => {
         source={{ uri: baseUrl + trip.image }}
         alt="image"
       />
-      <Box>
+      <Box style={styles.profileContainer}>
         <Box style={styles.profilePic}>Profile Picture</Box>
         <Box style={styles.buttons}>
           {authStore.user?._id === trip.owner && (
@@ -43,6 +44,7 @@ const TripDetail = ({ route, navigation }) => {
               >
                 Update Trip
               </Button>
+              <Box style={styles.buttonSpace}></Box>
               <Button onPress={handleDelete}>Delete Trip</Button>
             </>
           )}

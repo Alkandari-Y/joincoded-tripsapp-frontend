@@ -11,7 +11,6 @@ import {
 } from "native-base";
 import React from "react";
 import { View, Dimensions } from "react-native";
-import NativeBaseIcon from "../../components/NativeBaseIcon";
 
 // Define the config
 const config = {
@@ -32,8 +31,7 @@ const Home = ({ navigation }) => {
         height={Dimensions.get("window").height}
       >
         <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Voyager</Heading>
+          <Heading size="lg">Welcome to Voyager</Heading>
           <ToggleDarkMode />
           <Button
             onPress={() => {
