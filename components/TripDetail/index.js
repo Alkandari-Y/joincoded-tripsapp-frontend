@@ -27,21 +27,23 @@ const TripDetail = ({ route, navigation }) => {
           alt="image"
         />
         <Text style={styles.tripDetailTitle}>{trip.description}</Text>
-        <Button.Group
-          colorScheme="blue"
-          mx={{
-            base: "auto",
-            md: 0,
-          }}
-          size="sm"
-        >
-          <Button onPress={handleDelete}>Delete Trip</Button>
-          <Button
-            onPress={() => navigation.navigate("UpdateTrip", { trip: trip })}
+        {authStore.user?._id === trip.owner && (
+          <Button.Group
+            colorScheme="blue"
+            mx={{
+              base: "auto",
+              md: 0,
+            }}
+            size="sm"
           >
-            update Trip
-          </Button>
-        </Button.Group>{" "}
+            <Button onPress={handleDelete}>Delete Trip</Button>
+            <Button
+              onPress={() => navigation.navigate("UpdateTrip", { trip: trip })}
+            >
+              update Trip
+            </Button>
+          </Button.Group>
+        )}
       </View>
     </Pressable>
   );
