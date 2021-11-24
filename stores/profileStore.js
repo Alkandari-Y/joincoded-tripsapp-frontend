@@ -46,7 +46,6 @@ class ProfileStore {
             }
 
             const res = await instance.put(`/profiles/${profileId}`, formData);
-            console.log(foundProfile)
             for (const key in foundProfile) foundProfile[key] = res.data[key];
             this.userProfile = res.data
             navigation.navigate("Profile", { profile: this.userProfile })

@@ -42,7 +42,6 @@ const UserUpdateProfile = ({ route, navigation }) => {
     };
   
   const handleUpdate = () => {
-      console.log(userProfile.user._id)
       profileStore.updateProfile(_profile, userProfile._id, navigation, toast);
     };
 
