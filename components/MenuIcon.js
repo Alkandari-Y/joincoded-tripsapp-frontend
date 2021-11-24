@@ -35,6 +35,8 @@ const MenuIcon = ({ navigation }) => {
     //   }
       
     // );
+    if(!profileStore.userProfile)profileStore.setUserProfile(authStore.user._id)
+    console.log(profileStore.userProfile)
     
     navigation.navigate("Profile", { profile: profileStore.userProfile });
   };
