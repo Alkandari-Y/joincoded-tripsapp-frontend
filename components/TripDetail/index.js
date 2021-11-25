@@ -18,6 +18,7 @@ const TripDetail = ({ route, navigation }) => {
     navigation.navigate("TripList");
   };
   return (
+
     <View style={styles.background}>
       <Image
         style={styles.Image}
@@ -46,6 +47,7 @@ const TripDetail = ({ route, navigation }) => {
         <Text>{trip.description}</Text>
       </ScrollView>
     </View>
+
   );
 };
 export default observer(TripDetail);

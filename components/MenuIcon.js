@@ -12,7 +12,7 @@ import {
   Heading,
 } from "native-base";
 //React Native Vector Icons
-import Icon from "react-native-vector-icons/AntDesign";
+import Icon from "react-native-vector-icons/Ionicons";
 //Mobx
 import { observer } from "mobx-react";
 //Store Imports
@@ -36,7 +36,9 @@ const MenuIcon = ({ navigation }) => {
   return (
     <Center>
       <Pressable onPress={onOpen} style={{ marginRight: 15 }}>
-        <Icon name="setting" color="black" size={30} />
+
+        <Icon name="settings" color="black" size={30} />
+
       </Pressable>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content>

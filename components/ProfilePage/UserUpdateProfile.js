@@ -1,3 +1,4 @@
+
 import { observer } from "mobx-react";
 import { Button, FormControl, Input, useToast } from "native-base";
 import React, { useState } from "react";
@@ -57,8 +58,11 @@ const UserUpdateProfile = ({ route, navigation }) => {
       <Button mt="2" colorScheme="indigo" onPress={handleUpdate}>
         update profile
       </Button>
+
     </View>
   );
 };
 
+
 export default observer(UserUpdateProfile);
+
