@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { Spinner, Image, Button, Box, ScrollView } from "native-base";
+import { Spinner, Image, Button, Box, ScrollView, Pressable } from "native-base";
 import React from "react";
 import { Text, View } from "react-native";
 import tripStore from "../../stores/tripStore";
@@ -31,7 +31,11 @@ const TripDetail = ({ route, navigation }) => {
         alt="image"
       />
       <Box style={styles.profileContainer}>
-        <Box style={styles.profilePic} source={{uri: baseUrl + userProfile}}>Profile Picture</Box>
+        <Pressable onPress={() =>
+          navigation.navigate("Profile", { profile: userProfile })}>
+          <Image style={styles.profilePic} source={{uri: baseUrl + userProfile.image}}/>
+          <Text>{userProfile.user.username}</Text>
+        </Pressable> 
         <Box style={styles.buttons}>
           {authStore.user?._id === trip.owner._id && (
             <>
