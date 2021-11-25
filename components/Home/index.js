@@ -37,7 +37,7 @@ const Home = ({ navigation }) => {
             source={{
               uri: "https://cdn-icons.flaticon.com/png/512/670/premium/670016.png?token=exp=1637797245~hmac=256c88dcded7dc103a2debc0e57fab3a",
             }}
-            alt="react-native"
+            alt="WebsiteLogo"
           />
           <Heading size="lg">Welcome to Voyager</Heading>
           <ToggleDarkMode />
