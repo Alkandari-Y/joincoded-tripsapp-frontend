@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
   },
   iconlist: {
     position: "absolute",
-    left: 50,
+    left: "100%",
   },
 });
