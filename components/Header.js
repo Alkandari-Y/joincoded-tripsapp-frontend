@@ -13,7 +13,14 @@ const Header = ({ navigation }) => {
         name="list"
         onPress={() => navigation.navigate("TripList")}
       />
-      <Icon size={28} name="home" onPress={() => navigation.navigate("Home")} />
+      <View style={styles.header}>
+        <Icon
+          style={styles.iconHome}
+          size={28}
+          name="home"
+          onPress={() => navigation.navigate("Home")}
+        />
+      </View>
     </View>
   );
 };
@@ -30,6 +37,12 @@ const styles = StyleSheet.create({
   },
   iconlist: {
     position: "absolute",
+
     left: "100%",
+  },
+
+  iconHome: {
+    position: "absolute",
+    right: "90%",
   },
 });
