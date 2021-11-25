@@ -47,6 +47,7 @@ const TripDetail = ({ route, navigation }) => {
           <Image
             style={styles.profilePic}
             source={{ uri: baseUrl + userProfile.image }}
+            alt="UserProfilePic"
           />
           <Heading style={styles.username}>{userProfile.user.username}</Heading>
         </Pressable>

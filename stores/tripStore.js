@@ -29,13 +29,12 @@ class TripStore {
 
       const res = await instance.post("/trips", formData);
       this.trips.push(res.data);
-      const newTrip = this.trips.find((trip) => trip._id === res.data._id);
       toast.show({
         title: "Trip UpDate!",
         status: "success",
         placement: "top",
       });
-      navigation.navigate("TripDetail", { trip: newTrip });
+      navigation.navigate("TripDetail", { trip: res.data });
     } catch (error) {
       console.log(error);
       toast.show({

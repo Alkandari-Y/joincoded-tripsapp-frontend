@@ -35,7 +35,7 @@ const Home = ({ navigation }) => {
           <Image
             size="200"
             source={{
-              uri: "https://cdn-icons.flaticon.com/png/512/670/premium/670016.png?token=exp=1637839927~hmac=0321c2ad1b0159ebe50d1fa35c48c0a7",
+              uri: "https://cdn-icons.flaticon.com/png/512/670/premium/670016.png?token=exp=1637848499~hmac=5ce434902221d934b85a6463ac66185b",
             }}
             alt="WebsiteLogo"
           />
