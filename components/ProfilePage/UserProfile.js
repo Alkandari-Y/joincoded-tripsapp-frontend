@@ -41,7 +41,13 @@ const UserProfile = ({ navigation, route }) => {
         profileId={selectedProfile._id}
       />
 
-      <Heading style={styles.color} size="md" marginLeft="5" marginBottom="5">
+      <Heading
+        style={styles.color}
+        size="md"
+        marginLeft="5"
+        marginBottom="5"
+        marginTop="5"
+      >
         About Me:
       </Heading>
       <ScrollView>
@@ -56,6 +62,8 @@ const UserProfile = ({ navigation, route }) => {
                 userProfile: selectedProfile,
               })
             }
+            variant="outline"
+            colorScheme="indigo"
             marginTop="5"
           >
             Update Profile

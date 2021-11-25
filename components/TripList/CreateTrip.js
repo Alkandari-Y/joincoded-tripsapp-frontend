@@ -54,20 +54,35 @@ const CreateTrip = ({ navigation }) => {
     <View>
       <FormControl>
         <FormControl.Label>Trip Name:</FormControl.Label>
-        <Input onChangeText={(title) => setTrip({ ...trip, title })} />
+        <Input
+          onChangeText={(title) => setTrip({ ...trip, title })}
+          placeholder="Please enter your trip's name!"
+        />
       </FormControl>
       <FormControl>
         <FormControl.Label>Choose An Image to Upload</FormControl.Label>
-        <Button title="Pick an image from camera roll" onPress={_pickImage} />
-        {/* {newImage && <Image source={{ uri: newImage }} style={{ width: 200, height: 200 }} />} */}
+        <Button
+          title="Pick an image from camera roll"
+          onPress={_pickImage}
+          variant="outline"
+          colorScheme="success"
+        >
+          Upload Image
+        </Button>
       </FormControl>
       <FormControl>
         <FormControl.Label>Description:</FormControl.Label>
         <Input
           onChangeText={(description) => setTrip({ ...trip, description })}
+          placeholder="Please enter your trip description!"
         />
       </FormControl>
-      <Button mt="2" colorScheme="indigo" onPress={handleSubmit}>
+      <Button
+        mt="2"
+        colorScheme="indigo"
+        onPress={handleSubmit}
+        variant="outline"
+      >
         Create Trip
       </Button>
     </View>

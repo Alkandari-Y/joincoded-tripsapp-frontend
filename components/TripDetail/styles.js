@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
     marginLeft: "5%",
     marginRight: "5%",
   },
+
+  username: { color: "black", marginLeft: "10%" },
   buttons: {
     display: "flex",
     marginTop: "7%",

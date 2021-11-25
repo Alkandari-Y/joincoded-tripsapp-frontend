@@ -47,23 +47,39 @@ const UpdateTrip = ({ route, navigation }) => {
   return (
     <View>
       <FormControl>
-        <FormControl.Label>updated Trip Name:</FormControl.Label>
+        <FormControl.Label>Updated Trip Name:</FormControl.Label>
 
-        <Input onChangeText={(title) => setTrip({ ..._trip, title })} />
+        <Input
+          onChangeText={(title) => setTrip({ ..._trip, title })}
+          placeholder="Please enter a new trip name!"
+        />
       </FormControl>
       <FormControl>
         <FormControl.Label>Choose An Image to Upload</FormControl.Label>
-        <Button title="Pick an image from camera roll" onPress={_pickImage} />
+        <Button
+          title="Pick an image from camera roll"
+          onPress={_pickImage}
+          variant="outline"
+          colorScheme="success"
+        >
+          Upload Image
+        </Button>
       </FormControl>
 
       <FormControl>
-        <FormControl.Label>updated Description:</FormControl.Label>
+        <FormControl.Label>Updated Description:</FormControl.Label>
         <Input
           onChangeText={(description) => setTrip({ ..._trip, description })}
+          placeholder="Please enter a new trip description!"
         />
       </FormControl>
-      <Button mt="2" colorScheme="indigo" onPress={handleUpdate}>
-        update Trip
+      <Button
+        mt="2"
+        colorScheme="indigo"
+        onPress={handleUpdate}
+        variant="outline"
+      >
+        Update Trip
       </Button>
     </View>
   );

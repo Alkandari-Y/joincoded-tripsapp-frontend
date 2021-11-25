@@ -1,5 +1,13 @@
 import { observer } from "mobx-react";
-import { Spinner, Image, Button, Box, ScrollView, Pressable } from "native-base";
+import {
+  Spinner,
+  Image,
+  Button,
+  Box,
+  ScrollView,
+  Pressable,
+  Heading,
+} from "native-base";
 import React from "react";
 import { Text, View } from "react-native";
 import tripStore from "../../stores/tripStore";
@@ -11,8 +19,8 @@ import profileStore from "../..//stores/profileStore";
 const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
 
-  const userProfile = profileStore.profiles.find(profile => 
-    profile._id === trip.owner.profile
+  const userProfile = profileStore.profiles.find(
+    (profile) => profile._id === trip.owner.profile
   );
 
   if (tripStore.isLoading) {
@@ -31,11 +39,17 @@ const TripDetail = ({ route, navigation }) => {
         alt="image"
       />
       <Box style={styles.profileContainer}>
-        <Pressable onPress={() =>
-          navigation.navigate("Profile", { profile: userProfile })}>
-          <Image style={styles.profilePic} source={{uri: baseUrl + userProfile.image}}/>
-          <Text>{userProfile.user.username}</Text>
-        </Pressable> 
+        <Pressable
+          onPress={() =>
+            navigation.navigate("Profile", { profile: userProfile })
+          }
+        >
+          <Image
+            style={styles.profilePic}
+            source={{ uri: baseUrl + userProfile.image }}
+          />
+          <Heading style={styles.username}>{userProfile.user.username}</Heading>
+        </Pressable>
         <Box style={styles.buttons}>
           {authStore.user?._id === trip.owner._id && (
             <>
@@ -43,11 +57,19 @@ const TripDetail = ({ route, navigation }) => {
                 onPress={() =>
                   navigation.navigate("UpdateTrip", { trip: trip })
                 }
+                variant="outline"
+                colorScheme="info"
               >
                 Update Trip
               </Button>
               <Box style={styles.buttonSpace}></Box>
-              <Button onPress={handleDelete}>Delete Trip</Button>
+              <Button
+                onPress={handleDelete}
+                variant="outline"
+                colorScheme="danger"
+              >
+                Delete Trip
+              </Button>
             </>
           )}
         </Box>
@@ -56,7 +78,6 @@ const TripDetail = ({ route, navigation }) => {
         <Text>{trip.description}</Text>
       </ScrollView>
     </View>
-
   );
 };
 export default observer(TripDetail);
