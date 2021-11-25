@@ -1,4 +1,3 @@
-
 import { observer } from "mobx-react";
 import { Button, FormControl, Input, useToast } from "native-base";
 import React, { useState } from "react";
@@ -47,22 +46,34 @@ const UserUpdateProfile = ({ route, navigation }) => {
   return (
     <View>
       <FormControl>
-        <FormControl.Label>Choose An Image to Upload</FormControl.Label>
-        <Button title="Pick an image from camera roll" onPress={_pickImage} />
+        <FormControl.Label>Choose an image to upload:</FormControl.Label>
+        <Button
+          title="Pick an image from camera roll"
+          onPress={_pickImage}
+          variant="outline"
+          colorScheme="success"
+        >
+          Upload Image
+        </Button>
       </FormControl>
 
       <FormControl>
         <FormControl.Label>Updated Bio:</FormControl.Label>
-        <Input onChangeText={(bio) => setProfile({ ..._profile, bio })} />
+        <Input
+          onChangeText={(bio) => setProfile({ ..._profile, bio })}
+          placeholder="Please enter your new bio!"
+        />
       </FormControl>
-      <Button mt="2" colorScheme="indigo" onPress={handleUpdate}>
+      <Button
+        mt="2"
+        colorScheme="indigo"
+        onPress={handleUpdate}
+        variant="outline"
+      >
         update profile
       </Button>
-
     </View>
   );
 };
 
-
 export default observer(UserUpdateProfile);
-

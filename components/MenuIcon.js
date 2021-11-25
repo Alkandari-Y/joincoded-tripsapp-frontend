@@ -36,9 +36,7 @@ const MenuIcon = ({ navigation }) => {
   return (
     <Center>
       <Pressable onPress={onOpen} style={{ marginRight: 15 }}>
-
         <Icon name="settings" color="black" size={30} />
-
       </Pressable>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content>
@@ -67,13 +65,18 @@ const MenuIcon = ({ navigation }) => {
                   <Button
                     onPress={() => navigation.navigate("CreateTrip")}
                     variant="outline"
+                    colorScheme="success"
                   >
                     Create Trip
                   </Button>
                 </Actionsheet.Item>
 
                 <Actionsheet.Item>
-                  <Button onPress={handleUserProfileNav} variant="outline">
+                  <Button
+                    onPress={handleUserProfileNav}
+                    variant="outline"
+                    colorScheme="indigo"
+                  >
                     View Profile
                   </Button>
                 </Actionsheet.Item>
@@ -82,7 +85,7 @@ const MenuIcon = ({ navigation }) => {
                   <Button
                     onPress={() => authStore.signOut()}
                     variant="outline"
-                    colorScheme="secondary"
+                    colorScheme="danger"
                   >
                     Logout
                   </Button>
