@@ -3,7 +3,7 @@ import React from "react";
 //React Native
 import { Text } from "react-native";
 //Native Base
-import { HStack, Image, ScrollView, View, Heading } from "native-base";
+import { HStack, Image, ScrollView, View, Heading, Pressable } from "native-base";
 //Mobx
 import { observer } from "mobx-react";
 //Axios
@@ -14,7 +14,7 @@ import styles from "./styles";
 
 const CreatedTripsList = ({ navigation, profileId }) => {
   const userCreatedTrip = tripStore.trips.filter(
-    (trip) => trip.owner === profileId
+    (trip) => trip.owner.profile === profileId
   );
 
   //Need to Add onPress to the mapped component to redirect user to detail page
@@ -22,11 +22,13 @@ const CreatedTripsList = ({ navigation, profileId }) => {
 
   const createdTrips = userCreatedTrip.map((trip) => (
     <View style={styles.tripItem}>
-      <Image
-        style={styles.image}
-        source={{ uri: baseUrl + trip.image }}
-        alt={trip.title}
-      />
+      <Pressable onPress={()=>navigation.navigate("TripDetail", {trip: trip})}>
+        <Image
+          style={styles.image}
+          source={{ uri: baseUrl + trip.image }}
+          alt={trip.title}
+        />
+      </Pressable>
       <Heading style={styles.tripName}>{trip.title}</Heading>
     </View>
   ));

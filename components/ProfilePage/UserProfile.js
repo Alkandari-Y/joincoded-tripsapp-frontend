@@ -38,7 +38,7 @@ const UserProfile = ({ navigation, route }) => {
       </Heading>
       <CreatedTripsList
         navigation={navigation}
-        profileId={selectedProfile.user._id}
+        profileId={selectedProfile._id}
       />
 
       <Heading style={styles.color} size="md" marginLeft="5" marginBottom="5">
