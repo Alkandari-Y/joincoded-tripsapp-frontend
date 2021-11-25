@@ -6,7 +6,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 //AsyncStorage
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import profileStore from './profileStore'
+import profileStore from "./profileStore";
 
 class AuthStore {
   constructor() {
@@ -59,7 +59,7 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", user);
       await this.setUser(res.data.token);
-      await profileStore.pushSignUpProfile()
+      await profileStore.pushSignUpProfile();
       navigation.navigate("Home");
       toast.show({
         title: "Welcome",

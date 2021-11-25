@@ -1,13 +1,5 @@
 import { observer } from "mobx-react";
-import {
-  Spinner,
-  Image,
-  Pressable,
-  Button,
-  Box,
-  ScrollView,
-  Divider,
-} from "native-base";
+import { Spinner, Image, Button, Box, ScrollView } from "native-base";
 import React from "react";
 import { Text, View } from "react-native";
 import tripStore from "../../stores/tripStore";

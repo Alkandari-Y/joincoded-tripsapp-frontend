@@ -8,8 +8,8 @@ import {
   Box,
   Center,
   useDisclose,
-  Text,
   Button,
+  Heading,
 } from "native-base";
 //React Native Vector Icons
 import Icon from "react-native-vector-icons/AntDesign";
@@ -27,16 +27,16 @@ const MenuIcon = ({ navigation }) => {
   };
 
   const handleUserProfileNav = () => {
+    if (!profileStore.userProfile)
+      profileStore.setUserProfile(authStore.user._id);
 
-    if (!profileStore.userProfile) profileStore.setUserProfile(authStore.user._id);
-    
     navigation.navigate("Profile", { profile: profileStore.userProfile });
   };
 
   return (
     <Center>
       <Pressable onPress={onOpen} style={{ marginRight: 15 }}>
-        <Icon name="setting" color="black" size={15} />
+        <Icon name="setting" color="black" size={30} />
       </Pressable>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content>
@@ -55,20 +55,35 @@ const MenuIcon = ({ navigation }) => {
               <>
                 {authStore.user && (
                   <Actionsheet.Item>
-                    Hello {authStore.user.username}
+                    <Heading color="black">
+                      Greetings {authStore.user.username}
+                    </Heading>
                   </Actionsheet.Item>
                 )}
 
                 <Actionsheet.Item>
-                  <Button onPress={() => navigation.navigate("CreateTrip")}>Create Trip</Button>
+                  <Button
+                    onPress={() => navigation.navigate("CreateTrip")}
+                    variant="outline"
+                  >
+                    Create Trip
+                  </Button>
                 </Actionsheet.Item>
 
                 <Actionsheet.Item>
-                  <Button onPress={handleUserProfileNav}>View Profile</Button>
+                  <Button onPress={handleUserProfileNav} variant="outline">
+                    View Profile
+                  </Button>
                 </Actionsheet.Item>
 
                 <Actionsheet.Item>
-                  <Button onPress={() => authStore.signOut()}>Logout!</Button>
+                  <Button
+                    onPress={() => authStore.signOut()}
+                    variant="outline"
+                    colorScheme="secondary"
+                  >
+                    Logout
+                  </Button>
                 </Actionsheet.Item>
               </>
             )}

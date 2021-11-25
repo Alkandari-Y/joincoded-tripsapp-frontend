@@ -12,6 +12,7 @@ import {
 } from "native-base";
 import { observer } from "mobx-react";
 import { baseUrl } from "../../stores/baseUrl";
+import styles from "./styles";
 
 const TripItem = ({ trip, navigation }) => {
   return (
@@ -27,7 +28,7 @@ const TripItem = ({ trip, navigation }) => {
         borderColor="coolGray.200"
         borderWidth="1"
         margin="auto"
-        marginBottom="5%"
+        marginBottom="5"
         _dark={{
           borderColor: "coolGray.600",
           backgroundColor: "gray.700",
@@ -50,7 +51,7 @@ const TripItem = ({ trip, navigation }) => {
             />
           </AspectRatio>
           <Center
-            bg="#FFBA08"
+            bg="violet.500"
             _dark={{
               bg: "violet.400",
             }}
@@ -64,7 +65,7 @@ const TripItem = ({ trip, navigation }) => {
             px="3"
             py="1.5"
           >
-            {trip.owner}
+            PHOTOS
           </Center>
         </Box>
         <Stack p="4" space={3}>
@@ -87,19 +88,11 @@ const TripItem = ({ trip, navigation }) => {
               Description:
             </Text>
           </Stack>
-          <Text>{trip.description}</Text>
+          <Text fontWeight="400" style={styles.tripDescription}>
+            {trip.description}
+          </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
-            <HStack alignItems="center">
-              <Text
-                color="coolGray.600"
-                _dark={{
-                  color: "warmGray.200",
-                }}
-                fontWeight="400"
-              >
-                {trip.date}
-              </Text>
-            </HStack>
+            <HStack alignItems="center"></HStack>
           </HStack>
         </Stack>
       </Box>
