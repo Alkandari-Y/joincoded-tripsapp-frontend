@@ -8,10 +8,10 @@ import {
   Text,
   useColorMode,
   VStack,
+  Image,
 } from "native-base";
 import React from "react";
 import { View, Dimensions } from "react-native";
-import NativeBaseIcon from "../../components/NativeBaseIcon";
 
 // Define the config
 const config = {
@@ -32,13 +32,20 @@ const Home = ({ navigation }) => {
         height={Dimensions.get("window").height}
       >
         <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Voyager</Heading>
+          <Image
+            size="200"
+            source={{
+              uri: "https://cdn-icons.flaticon.com/png/512/670/premium/670016.png?token=exp=1637797245~hmac=256c88dcded7dc103a2debc0e57fab3a",
+            }}
+            alt="react-native"
+          />
+          <Heading size="lg">Welcome to Voyager</Heading>
           <ToggleDarkMode />
           <Button
             onPress={() => {
               navigation.navigate("TripList");
             }}
+            variant="outline"
           >
             Chart your course now!
           </Button>

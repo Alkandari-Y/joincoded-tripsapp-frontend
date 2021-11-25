@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { ScrollView, Spinner } from "native-base";
+import { ScrollView, Spinner, View } from "native-base";
 import tripStore from "../../stores/tripStore";
 import TripItem from "./TripItem";
 import styles from "./styles";
@@ -14,7 +14,11 @@ const TripList = ({ navigation }) => {
     <TripItem navigation={navigation} trip={trip} key={trip._id} />
   ));
 
-  return <ScrollView style={styles.container}>{tripList}</ScrollView>;
+  return (
+    <View style={styles.background}>
+      <ScrollView style={styles.container}>{tripList}</ScrollView>
+    </View>
+  );
 };
 
 export default observer(TripList);

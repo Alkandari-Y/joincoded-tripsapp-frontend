@@ -22,24 +22,57 @@ class TripStore {
 
   createTrip = async (trip, navigation, toast) => {
     try {
-      const res = await instance.post("/trips", trip);
+      const formData = new FormData();
+      for (const key in trip) {
+        formData.append(key, trip[key]);
+      }
+
+      const res = await instance.post("/trips", formData);
       this.trips.push(res.data);
+      const newTrip = this.trips.find((trip) => trip._id === res.data._id);
+      toast.show({
+        title: "Trip UpDate!",
+        status: "success",
+        placement: "top",
+      });
+      navigation.navigate("TripDetail", { trip: newTrip });
     } catch (error) {
       console.log(error);
+      toast.show({
+        title: "Something Went Wrong!",
+        description: "You Broke Something",
+        status: "error",
+        placement: "top",
+      });
     }
   };
-  updateTrip = async (tripId, updatedTrip) => {
+
+  updateTrip = async (tripId, updatedTrip, navigation, toast) => {
     try {
-      const res = await instance.put(`/trips/${tripId}`, updatedTrip);
-      this.trips = this.trips.map((trip) => {
-        if (trip._id === tripId) {
-          return res.data;
-        } else {
-          return trip;
-        }
+      const trip = this.trips.find((trip) => trip._id === tripId);
+
+      const formData = new FormData();
+      for (const key in updatedTrip) {
+        formData.append(key, updatedTrip[key]);
+      }
+      const res = await instance.put(`/trips/${tripId}`, formData);
+
+      for (const key in trip) trip[key] = res.data[key];
+
+      toast.show({
+        title: "Trip UpDate!",
+        status: "success",
+        placement: "top",
       });
+      navigation.navigate("TripDetail", { trip: trip });
     } catch (error) {
       console.log(error);
+      toast.show({
+        title: "Something Went Wrong!",
+        description: "You Broke Something",
+        status: "error",
+        placement: "top",
+      });
     }
   };
 

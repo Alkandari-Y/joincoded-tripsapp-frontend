@@ -1,54 +1,69 @@
 //React
-import React, { useState } from 'react'
+import React from "react";
 //Native Base
 import {
-    Stack,
-    Center,
-    Heading,
-    Divider,
-    Container,
-    Spinner
-  } from "native-base"
+  Stack,
+  Center,
+  Heading,
+  Spinner,
+  Button,
+  View,
+  ScrollView,
+} from "native-base";
 //Mobx
-import { observer } from 'mobx-react'
+import { observer } from "mobx-react";
 //Store
-import authStore from '../../stores/authStore'
-import profileStore from '../../stores/profileStore'
+import authStore from "../../stores/authStore";
+import profileStore from "../../stores/profileStore";
 //Components
-import UserAvatar from './UserAvatar'
-import CreatedTripsList from './CreatedTripsList'
+import UserAvatar from "./UserAvatar";
+import CreatedTripsList from "./CreatedTripsList";
+import styles from "./styles";
 
 const UserProfile = ({ navigation, route }) => {
-    
-    if (!profileStore.isLoading) {
-        return <Spinner />;
-    }
-    const selectedProfile = route.params.profile;
+  if (!profileStore.isLoading) {
+    return <Spinner />;
+  }
+  const selectedProfile = route.params.profile;
+  return (
+    <View style={styles.background}>
+      <UserAvatar
+        image={selectedProfile.image}
+        username={selectedProfile.user.username}
+        profileId={selectedProfile._id}
+      />
 
-    return (
-        <Center>
-            <Container  mt="2">
+      <Heading style={styles.color} size="md" marginLeft="5" marginBottom="5">
+        Created Trips:
+      </Heading>
+      <CreatedTripsList
+        navigation={navigation}
+        profileId={selectedProfile.user._id}
+      />
 
-                <UserAvatar image={selectedProfile.image} username={selectedProfile.user.username} profile={ selectedProfile  }/>
-                <Divider />
-                
-                <Heading size="md">Created Trips</Heading>
-                <CreatedTripsList navigation={ navigation } profileId={ selectedProfile.user._id } />
+      <Heading style={styles.color} size="md" marginLeft="5" marginBottom="5">
+        About Me:
+      </Heading>
+      <ScrollView>
+        <Center style={styles.bio}>{selectedProfile.bio}</Center>
+      </ScrollView>
 
-                
-                <Divider />
-                <Heading size="md">Bio</Heading>
-                <Stack mb="2.5" mt="1.5" direction="column" space={3}>
-                <Center>
-                    { selectedProfile.bio }
-                </Center>
+      {authStore.user?._id === selectedProfile.user._id && (
+        <Stack>
+          <Button
+            onPress={() =>
+              navigation.navigate("UserUpdateProfile", {
+                userProfile: selectedProfile,
+              })
+            }
+            marginTop="5"
+          >
+            Update Profile
+          </Button>
+        </Stack>
+      )}
+    </View>
+  );
+};
 
-                </Stack>
-
-
-            </Container>
-        </Center>
-    )
-}
-
-export default observer(UserProfile)
+export default observer(UserProfile);
