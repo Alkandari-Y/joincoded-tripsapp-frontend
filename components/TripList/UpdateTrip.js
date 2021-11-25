@@ -4,7 +4,6 @@ import { Text, View } from "react-native";
 
 import tripStore from "../../stores/tripStore";
 
-// i'm still working on this, i'm taking a break- will continue later.
 const UpdateTrip = ({ route, navigation }) => {
   const { trip } = route.params;
   const [_trip, setTrip] = useState({

@@ -12,6 +12,9 @@ import UserProfile from "./ProfilePage/UserProfile";
 import TripDetail from "./TripDetail";
 import UpdateTrip from "./TripList/UpdateTrip";
 
+import { View } from "native-base";
+import Header from "./Header";
+
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
@@ -21,6 +24,7 @@ const Navigation = () => {
       screenOptions={({ navigation }) => {
         return {
           headerRight: () => <MenuIcon navigation={navigation} />,
+          headerTitle: () => <Header navigation={navigation} />,
         };
       }}
     >

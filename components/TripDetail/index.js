@@ -22,10 +22,12 @@ const TripDetail = ({ route, navigation }) => {
     >
       <View style={styles.tripDetailWrapper}>
         <Image
-          style={styles.tripDetailImage}
-          source={{ uri: baseUrl + trip.image }}
+          source={{
+            uri: baseUrl + trip.image,
+          }}
           alt="image"
         />
+
         <Text style={styles.tripDetailTitle}>{trip.description}</Text>
         {authStore.user?._id === trip.owner && (
           <Button.Group
