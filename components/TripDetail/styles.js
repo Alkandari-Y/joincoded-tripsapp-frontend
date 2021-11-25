@@ -1,17 +1,14 @@
-import { Flex } from "native-base";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  background: {
-    backgroundColor: "teal",
-  },
+  background: { height: "100%", width: "100%", backgroundColor: "#ecfeff" },
   Image: {
     width: "75%",
     height: "40%",
     marginTop: "5%",
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "pink",
+    borderRadius: 5,
   },
   profileContainer: {
     display: "flex",

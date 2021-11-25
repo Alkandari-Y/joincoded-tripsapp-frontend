@@ -30,7 +30,7 @@ const Navigation = () => {
         component={Home}
         options={{
           headerStyle: {
-            backgroundColor: "#0075C4",
+            backgroundColor: "#0e7490",
           },
         }}
       />
@@ -39,25 +39,25 @@ const Navigation = () => {
         component={TripList}
         options={{
           headerStyle: {
-            backgroundColor: "#FFBA08",
+            backgroundColor: "#155e75",
           },
         }}
       />
       <Screen
         name="TripDetail"
         component={TripDetail}
-        options={({ navigation, route }) => {
+        options={({ route }) => {
           return {
             headerStyle: {
-              backgroundColor: "#356290",
+              backgroundColor: "#164e63",
             },
             title: route.params.trip.title,
           };
         }}
       />
-      <Screen name="Profile" component={UserProfile} />
       <Screen name="Signup" component={Signup} />
       <Screen name="Signin" component={Signin} />
+      <Screen name="Profile" component={UserProfile} />
       <Screen name="CreateTrip" component={CreateTrip} />
       <Screen name="UpdateTrip" component={UpdateTrip} />
       <Screen name="UserUpdateProfile" component={UserUpdateProfile} />
